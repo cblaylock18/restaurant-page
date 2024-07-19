@@ -78,7 +78,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+button {
     margin: 0;
     padding: 0;
     border: 0;
@@ -122,10 +123,19 @@ table {
     border-spacing: 0;
 }
 
+@font-face {
+    font-family: "italianaregular";
+    src: url("./fonts/Italiana/italiana-regular-webfont.woff2") format("woff2"),
+        url("./fonts/Italiana/italiana-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     position: relative;
     min-width: 100vw;
     min-height: 100vh;
+    font-family: "italianaregular", monospace;
 }
 
 .background {
@@ -134,7 +144,192 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    opacity: 0.55;
+    opacity: 0.45;
     background-size: cover;
     z-index: -1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+}
+
+nav > button {
+    height: 50px;
+    width: 150px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: rgb(48, 48, 48);
+    cursor: pointer;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 0;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    position: relative;
+}
+
+.order {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.384);
+    padding: 8px 0;
+    border-top: 4px dotted black;
+    border-bottom: 4px dotted black;
+}
+
+.order > button {
+    height: 50px;
+    width: 150px;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #ff7474;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.order > button:hover {
+    background-color: #ffe3e3;
+}
+
+.order > button:active {
+    background-color: #707070;
+    transform: scale(0.98);
+}
+
+.order > button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.5);
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.review {
+    padding: 20px;
+    margin: 20px;
+    border: 5px solid #4caf50;
+    border-radius: 15px;
+    background: linear-gradient(to bottom right, #ffffff, #cfffcf);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 600px;
+    text-align: center;
+}
+
+.review > img {
+    border-radius: 100%;
+    height: 50px;
+}
+
+.review > img:nth-child(1) {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+}
+
+.review > img:nth-child(2) {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+}
+
+.review + img {
+    width: clamp(300px, 75vw, 500px);
+    height: auto;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review + img:hover {
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.hours {
+    padding: 20px;
+    margin: 20px;
+    border: 5px solid #4caf50;
+    border-radius: 15px;
+    background: linear-gradient(to bottom right, #ffffff, #cfffcf);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    justify-items: center;
+}
+
+.hours-per-day {
+    justify-self: left;
+}
+
+.location {
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.781);
+    padding: 8px 0;
+    text-align: center;
+}
+
+.under-construction {
+    position: absolute;
+    top: 20vh;
+    left: 50vw;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    font-size: 5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ff0000;
+    animation: pulse 1.5s infinite;
+    white-space: nowrap;
+    background: #ff0;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .under-construction {
+        font-size: 2rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .under-construction {
+        font-size: 1rem;
+        padding: 6px;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+    }
 }

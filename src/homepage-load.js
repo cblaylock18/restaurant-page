@@ -12,6 +12,10 @@ mainIcon.src = mainSource;
 const pizza = new Image();
 pizza.src = pizzaSource;
 
+// restaurant name
+const restaurantName = document.createElement("h1");
+restaurantName.textContent = "Pizza the Hut";
+
 //headers, hook, lists, etc.
 // order pizza header below nav
 const orderPizzaDiv = document.createElement("div");
@@ -22,36 +26,41 @@ orderPizzaCarryOut.textContent = "Carry Out";
 const orderPizzaDelivery = document.createElement("button");
 orderPizzaDelivery.textContent = "Delivery";
 
-// restaurant name
-const restaurantName = document.createElement("h1");
-restaurantName.textContent = "Pizza the Hut";
-
 // restaurant review
 const restaurantReview = document.createElement("div");
 restaurantReview.classList.add("review");
 restaurantReview.textContent =
-    "Indulge in a slice of heaven at Pizza the Hut, where every pizza is crafted to perfection. Our deliciously cheesy creations, topped with the freshest ingredients, are guaranteed to satisfy your cravings. From classic pepperoni to gourmet specialties, we offer a mouth-watering variety that will leave you coming back for more. Join us for an unforgettable dining experience, where great taste meets great service. Come taste the difference at Pizza the Hut!";
+    "Indulge in a slice of heaven at Pizza the Hut, where every pizza is crafted to perfection with the freshest ingredients. From classic pepperoni to gourmet specialties, our mouth-watering variety guarantees to satisfy your cravings. Come taste the difference at Pizza the Hut!";
 const mushroom = new Image();
 mushroom.src = mushroomSource;
+const mushroom2 = new Image();
+mushroom2.src = mushroomSource;
 
 // restaurant hours
 const restaurantHours = document.createElement("div");
 restaurantHours.classList.add("hours");
 
 const daysAndHours = {
-    Monday: "6am - Midnight",
-    Tuesday: "6am - Midnight",
-    Wednesday: "6am - Midnight",
-    Thursday: "6am - Midnight",
-    Friday: "6am - 2am",
-    Saturday: "8am - 2am",
-    Sunday: "8am - 10pm",
+    Monday: "6am to Midnight",
+    Tuesday: "6am to Midnight",
+    Wednesday: "6am to Midnight",
+    Thursday: "6am to Midnight",
+    Friday: "6am to 2am",
+    Saturday: "8am to 2am",
+    Sunday: "8am to 10pm",
 };
 
 for (const [day, hours] of Object.entries(daysAndHours)) {
-    const dayHours = document.createElement("div");
-    dayHours.textContent = `${day}: ${hours}`;
-    restaurantHours.appendChild(dayHours);
+    const dayDiv = document.createElement("div");
+    dayDiv.classList.add("day");
+    dayDiv.textContent = day;
+
+    const hoursDiv = document.createElement("div");
+    hoursDiv.classList.add("hours-per-day");
+    hoursDiv.textContent = hours;
+
+    restaurantHours.appendChild(dayDiv);
+    restaurantHours.appendChild(hoursDiv);
 }
 
 // restaurant location
@@ -65,13 +74,14 @@ function homepageLoad() {
     document.querySelector("title").textContent = "Pizza the Hut - Home";
 
     // ordering pizza div directly below nav
+    content.appendChild(restaurantName);
     content.appendChild(orderPizzaDiv);
     orderPizzaDiv.appendChild(orderPizzaCarryOut);
     orderPizzaDiv.appendChild(orderPizzaDelivery);
-    content.appendChild(restaurantName);
     content.appendChild(restaurantReview);
+    content.appendChild(pizza);
     restaurantReview.appendChild(mushroom);
-    restaurantReview.appendChild(mushroom);
+    restaurantReview.appendChild(mushroom2);
     content.appendChild(restaurantHours);
     content.appendChild(restaurantLocation);
 }
