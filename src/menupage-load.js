@@ -4,7 +4,7 @@ const content = document.querySelector("#content");
 
 const underConstruction = document.createElement("div");
 underConstruction.classList.add("under-construction");
-underConstruction.textContent = "Under Construction";
+underConstruction.textContent = "Menu Under Construction";
 
 function menuPageLoad() {
     // change page title
