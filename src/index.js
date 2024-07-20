@@ -47,4 +47,4 @@ buttonArray.forEach((button) => {
     button.addEventListener("click", selectNewTab);
 });
 
-menuPage();
+homePage();
